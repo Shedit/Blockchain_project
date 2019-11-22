@@ -1,15 +1,17 @@
+const hexToBinary = require('hex-to-binary');
 const Block = require('./block');
-const { GENESIS_DATA } = require('./config');
+const { GENESIS_DATA, MINE_RATE } = require('./config');
 const cryptoHash = require('./crypto-hash');
 
 
 describe('Block', () => {
-    const timestamp = 'a-date';
+    const timestamp = 2000;
     const lastHash = 'foo-lastHash';
     const hash = 'bar-hash';
     const data = ['Blockchain', 'data']; 
     const nonce = 1; 
     const difficulty = 1;
+    
     const block = new Block({
         timestamp : timestamp, 
         lastHash : lastHash,
@@ -75,9 +77,38 @@ describe('Block', () => {
         });
 
         it('sets a `hash` that matches the difficulty criteria', () => {
-            expect(minedBlock.hash.substring(0, minedBlock.difficulty))
+            expect(hexToBinary(minedBlock.hash).substring(0, minedBlock.difficulty))
             .toEqual("0".repeat(minedBlock.difficulty));
         }); 
+
+        it('adjusts difficulty', () => {
+            const possibleResults = [lastBlock.difficulty +1, lastBlock.difficulty -1];
+            
+            expect(possibleResults.includes(minedBlock.difficulty)).toBe(true); 
+        });
+    });
+
+    describe('adjustDifficulty()', () => {
+        it('it raises the difficulty of too fast mined block', () => {
+            expect(
+                Block.adjustDifficulty({ 
+                    originalBlock : block, 
+                    timestamp : block.timestamp + MINE_RATE - 100 
+                })).toEqual(block.difficulty + 1);
+        });
+        it('lowers the difficulty for a to slow mined block', () => {
+            expect(
+                Block.adjustDifficulty({ 
+                    originalBlock : block, 
+                    timestamp : block.timestamp + MINE_RATE + 100 
+                })).toEqual(block.difficulty - 1);
+        });
+
+        it('has a lower limit of 1 ', () => {
+            block.difficulty = -1; 
+
+            expect(Block.adjustDifficulty({ originalBlock : block })).toEqual(1);
+        });
     });
 
 }); 
