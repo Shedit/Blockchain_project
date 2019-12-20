@@ -173,7 +173,26 @@ It was tricky to understand the difference of post and get requests. I believe I
 I learned that HTTP and HTTPS are completely different when it comes to the package where the request callback return undefined on HttpS and work on Http requests. WHy is under investigation. 
 
 
+## Section 5: Wallet and transactions (Commit 9)
+
+The goal in this section is to add the capability to make transactions. 
+
+Need to: 
+
+- Add wallet
+- Make and verify signatures
+- Ability to make transactions
 
 
+
+### Creation of transactions
+
+In this subsection, I created the transaction module and tests for the module. 
+
+- Created an update function, for handling multiple outputs. On a bug related to JS, were changing objects in "this" updates the whole object and discards the original given properties, thus treating equal statements as true if changed from original: Example: 
+
+(Issue with re-signing a transaction) 
+
+first give this object id 1, then change this object to have id 2, id 1 is discarded forever.  (hope that makes sense)
 
 
