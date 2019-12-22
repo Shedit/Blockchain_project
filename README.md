@@ -9,7 +9,7 @@ This project is intended to be a hands=on learning experience on blockchain, by 
 ## Learning goals 
 
 - Be familiarized with JavaScript, specifically node.js 
-- Undetstand in-depth how Blockchain and cryptocurrency work "under the hood". 
+- Understand in-depth how Blockchain and cryptocurrency work "under the hood". 
 - Learn how to deploy an application from scratch with a front-end and a back-end. 
 
 
@@ -173,7 +173,7 @@ It was tricky to understand the difference of post and get requests. I believe I
 I learned that HTTP and HTTPS are completely different when it comes to the package where the request callback return undefined on HttpS and work on Http requests. WHy is under investigation. 
 
 
-## Section 5: Wallet and transactions (Commit 9)
+## Section 5: Wallet, Keys and Transactions | The CryptoCurrency Backend (Commit 9)
 
 The goal in this section is to add the capability to make transactions. 
 
@@ -185,6 +185,7 @@ Need to:
 
 
 
+
 ### Creation of transactions
 
 In this subsection, I created the transaction module and tests for the module. 
@@ -193,6 +194,33 @@ In this subsection, I created the transaction module and tests for the module.
 
 (Issue with re-signing a transaction) 
 
+
 first give this object id 1, then change this object to have id 2, id 1 is discarded forever.  (hope that makes sense)
 
+
+### Reflection 
+
+in this Section I have accomplished the following: 
+
+- Created the core wallet class for the cryptocurrency.
+
+- Developed the cryptographic key pair and public key addressing system.
+
+- Implementing signature generation and verification to make transactions official.
+
+- Built the main transaction class - with the output map and input structure.
+
+- Developed functionality to actually validate transactions.
+
+- Tied transaction creation with the wallet class.
+
+- Allowed transactions to be updated with multiple outputs to efficiently use existing objects.
+
+- Improved the hash function to recognize objects with new properties as changes in incoming data.
+
+- Covered edges cases with transaction updates to prevent vulnerabilities.
+
+
+
+THis section was the most challenging to keep my head straight, where there was a lot of test and other case I couldn't really wrap my head around and had to investigate further to really grasp the core concepts. I learned more about how 'this' works and how to write tests on a deeper level. 
 
