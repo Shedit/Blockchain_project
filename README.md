@@ -222,5 +222,31 @@ in this Section I have accomplished the following:
 
 
 
-THis section was the most challenging to keep my head straight, where there was a lot of test and other case I couldn't really wrap my head around and had to investigate further to really grasp the core concepts. I learned more about how 'this' works and how to write tests on a deeper level. 
+This section was the most challenging to keep my head straight, where there was a lot of test and other case I couldn't really wrap my head around and had to investigate further to really grasp the core concepts. I learned more about how 'this' works and how to write tests on a deeper level. 
+
+## Section 6: The Transaction Pool 
+
+In this section I did the following: 
+
+- Created the core transaction pool with an ability to set transactions.
+
+
+- Handled transaction through the API, and added API-generated transactions to the pool.
+
+- Made sure invalid transactions did not go to the pool.
+
+- Handled updates to transactions through the API.
+
+- Exposed a new API method to read the transaction pool data.
+
+- Broadcasted transactions as they occurred through the API.
+
+- Synced the transaction pool map as a network-dependent object like the blockchain.
+
+
+### Reflection 
+
+This chapter the biggest challenges was to understand how the transactionPoolMap worked and how setTransactions work. There was issues knowing when to pass the object vs only passing values. 
+
+
 
