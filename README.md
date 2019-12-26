@@ -279,3 +279,19 @@ In this chapter I will be achieving the following:
 - Validated the entire transaction itself when accepting new user-contributed blockchains.
 
 
+Five steps are needed to be done to complete this: 
+
+1. grabs all VALID transactions in pool
+
+2. Generate a miners reward 
+
+3. Do the CPU work to find a VALID hash 
+
+4. Brodcast the updated blockchain 
+
+5. Clear the transaction pool. 
+
+
+Commit 12: 
+
+Added 
