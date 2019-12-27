@@ -61,6 +61,15 @@ describe('Blockchain', () => {
                 });
             });
 
+            describe('AND the chain CONTAINS a block with an undefined field', () => {
+                it('returns false', () => {
+                    blockchain.chain[2].data = undefined;
+
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
+
+                });
+            })
+
             describe('AND the chain contains a a block with jumped difficulty', () => {
                 it('returns false', () => {
                      const lastBlock = blockchain.chain[blockchain.chain.length-1]         
