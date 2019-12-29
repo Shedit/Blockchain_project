@@ -292,6 +292,6 @@ Five steps are needed to be done to complete this:
 5. Clear the transaction pool. 
 
 
-Commit 12: 
+The blockchain backend is now done. 
 
-Added 
+What I've learned from this section is that writing tests are difficult, but saves you so much time in the end, and it challenges your thinking in an exciting way. 
