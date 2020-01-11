@@ -295,3 +295,21 @@ Five steps are needed to be done to complete this:
 The blockchain backend is now done. 
 
 What I've learned from this section is that writing tests are difficult, but saves you so much time in the end, and it challenges your thinking in an exciting way. 
+
+
+## Section 8: The Frontend 
+
+
+### The blockchain Frontend 
+
+### The transaction frontend
+
+The Transaction frontend will consist of three views: 
+
+- Viewing the transaciton pool
+- Conduct a transaction
+- Mine a transaction
+
+
+
+
