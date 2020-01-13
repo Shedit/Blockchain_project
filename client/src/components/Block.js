@@ -32,8 +32,8 @@ class Block extends Component {
                 }
                 <br />
                 <Button 
-                    bsstyle="danger"
-                    bssize="small"
+                    variant="outline-danger"
+                    size="sm"
                     onClick={this.toggleTransaction}
                 >
                     Show Less
@@ -45,9 +45,10 @@ class Block extends Component {
         return (
         <div>
             <div>Data: {dataDisplay}</div>
+            <br />
             <Button 
-                bsstyle="danger"
-                bssize="small"
+                variant="outline-danger"
+                size="sm"
                 onClick={this.toggleTransaction}
             >
                 Show More
