@@ -32,7 +32,11 @@ body {
     padding: 5%;
 }
 
+.ConductTransaction { 
+    margin: 10%;
+    
+}
 a, a:hover { 
-    color: #F32013;
+    color: #F32013 ;
     text-decoration: underline;
 }
