@@ -9,21 +9,25 @@ const TransactionPool = require('./wallet/transaction-pool');
 const Wallet = require('./wallet');
 const TransactionMiner = require('./app/transaction-miner');
 
+const isDevelopment = process.env.ENV === 'development';
+
+const DEFAULT_PORT = 3000;
+const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
+const REDIS_URL = isDevelopment ? 
+'redis://127.0.0.1:6379' :
+'redis://h:pdfc772eca829fb913d990d4ddb39e9276ab751c63e612ee4b03359c4bf9cdcc0@ec2-34-205-79-72.compute-1.amazonaws.com:32229';
 
 const app = express();
 const blockchain = new Blockchain(); 
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
-const pubsub = new PubSub({ blockchain, transactionPool });
+const pubsub = new PubSub({ blockchain, transactionPool, redisUrl: REDIS_URL });
 const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wallet, pubsub }); 
 const path = require('path');
 
 //GETrequest, used o read data from backend, 
 //specifically a block instance from the blockchain
 // endpoint will be 'api/blocks' 
-
-const DEFAULT_PORT = 3000;
-const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 
 
 
@@ -122,33 +126,33 @@ const syncWithRootState = () => {
 };
 
 // seeding the blockchain with some transactions
-
-const walletFoo = new Wallet();
-const walletBar = new Wallet();
+if (isDevelopment) {
+    const walletFoo = new Wallet();
+    const walletBar = new Wallet();
  
-const generateWalletTransactions = ({ wallet, recipient, amount }) => {
+    const generateWalletTransactions = ({ wallet, recipient, amount }) => {
     const transaction =  wallet.createTransaction({
         recipient, amount, chain: blockchain.chain
     });
 
     transactionPool.setTransaction(transaction);
 
-};
+    };
 
-const walletAction = () => generateWalletTransactions({
+    const walletAction = () => generateWalletTransactions({
     wallet, recipient: walletFoo.publicKey, amount: Math.ceil(Math.random()*5)
-});
+    });
 
-const walletFooAction = () => generateWalletTransactions({
+    const walletFooAction = () => generateWalletTransactions({
     wallet: walletFoo, recipient: walletBar.publicKey, amount: Math.ceil(Math.random()*10)
-});
+    });
  
-const walletBarAction = () => generateWalletTransactions({
+    const walletBarAction = () => generateWalletTransactions({
     wallet: walletBar, recipient: wallet.publicKey, amount: Math.ceil(Math.random()*15)
-});
+    });
 
 
-for( let i=0; i < 10; i++) {
+    for( let i=0; i < 10; i++) {
     if(i%3 === 0){
         walletAction();
         walletFooAction();
@@ -160,8 +164,8 @@ for( let i=0; i < 10; i++) {
         walletBarAction();
     }
 transactionMiner.mineTransactions();
-}
-
+    }
+};
 
 let PEER_PORT;
 
@@ -169,7 +173,7 @@ if (process.env.GENERATE_PEER_PORT === 'true'){
     PEER_PORT = DEFAULT_PORT + Math.ceil(Math.random()*1000)
 }
 
-const PORT = PEER_PORT || DEFAULT_PORT;
+const PORT = process.env.PORT || PEER_PORT || DEFAULT_PORT;
 
 
 app.listen(PORT, () => {

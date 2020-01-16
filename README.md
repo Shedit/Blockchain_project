@@ -328,4 +328,8 @@ Visualized the transaction pool - and added real-time polling capabilities.
 Added a way to mine a block through the frontend.
 
 
+## Section 9: Deployment 
 
+For deployment we will use Heroku.
+
+### 
