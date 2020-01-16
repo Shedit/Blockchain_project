@@ -311,5 +311,21 @@ The Transaction frontend will consist of three views:
 - Mine a transaction
 
 
+What I did in this section: 
+
+Created toggle-able transaction displays.
+
+Built a reusable frontend transaction component.
+
+Added routing for a multi-page application that renders different content based on the url.
+
+Supported the conducting of transactions through a form.
+
+Posted transactions through the fetch API.
+
+Visualized the transaction pool - and added real-time polling capabilities.
+
+Added a way to mine a block through the frontend.
+
 
 
