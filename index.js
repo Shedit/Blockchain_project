@@ -39,7 +39,7 @@ const path = require('path');
 if (!isDevelopment) {
     setInterval(
         () => {http.get("https://intense-wildwood-82940.herokuapp.com/")}, 
-        300)
+        30000*5)
     };
 
 
