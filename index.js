@@ -36,11 +36,7 @@ const path = require('path');
 
 
 
-if (!isDevelopment) {
-    setInterval(
-        () => {https.get("https://intense-wildwood-82940.herokuapp.com/")}, 
-        30000*5)
-    };
+
 
 
 app.use(bodyParser.json());
