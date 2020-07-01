@@ -166,7 +166,7 @@ const syncWithRootState = () => {
 };
 
 // seeding the blockchain with some transactions
-if (isDevelopment) {
+if (isDevelopment === true) {
     const walletFoo = new Wallet();
     const walletBar = new Wallet();
  
