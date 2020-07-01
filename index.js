@@ -19,7 +19,7 @@ const ROOT_NODE_ADDRESS = isDevelopment ?
 'https://intense-wildwood-82940.herokuapp.com';
 const REDIS_URL = isDevelopment ? 
 'redis://127.0.0.1:6379' :
-'redis://h:pdfc772eca829fb913d990d4ddb39e9276ab751c63e612ee4b03359c4bf9cdcc0@ec2-34-205-79-72.compute-1.amazonaws.com:32229';
+'redis://h:pdfc772eca829fb913d990d4ddb39e9276ab751c63e612ee4b03359c4bf9cdcc0@ec2-54-162-237-83.compute-1.amazonaws.com:8799';
 
 const app = express();
 const blockchain = new Blockchain(); 
